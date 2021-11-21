@@ -3,6 +3,9 @@ void Throwing_Yuts(int* yut_array, int *count)
 	const int go[16] = { 1,1,1,2,2,2,2,2,2,3,3,3,3,4,5,6 };
 	int state = 0, i = 0;
 	yut_array[20] = { 0, };
+	char act;
+	printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
+	scanf("%c",&act);
 	while (1)
 	{
 		int yut = go[rand() % 16];
