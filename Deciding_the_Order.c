@@ -70,5 +70,12 @@ Ex:
 
 	if (yut1 < yut2) printf("%s의 선입니다!\n\n\n", name1);
 
-	if (yut1 > yut2) printf("%s의 선입니다!\n\n\n", name2);
+	if (yut1 > yut2)
+	{
+		char tmp[20];
+		printf("%s의 선입니다!\n\n\n", name2);
+		*tmp = *name1;
+		*name1 = *name2;
+		*name2 = *tmp;
+	}
 } //main func needs "srand(time(NULL))", team names
