@@ -1,17 +1,28 @@
-#include <stdio.h>
-#include <windows.h>
-
-int main()
+void Rules()
 {
-	printf("-----------\n\nÀ·³îÀÌ ±ÔÄ¢\n\n-----------\n");
-	printf("-<ÀÌµ¿ ¼ö>-\n");
-	printf("µµ-1Ä­\n°³-2Ä­\n°É-3Ä­\nÀ·-4Ä­\n¸ð-5Ä­\n»ªµµ-µÚ·Î 1Ä­\n\n");
-	printf("1. °¢ ÆÀÀÌ À·À» ´øÁ® ÀÛÀº °ªÀÌ ³ª¿À´Â ÆÀÀÌ ¸ÕÀú ÇÑ´Ù.\n");
-	printf("2. À·À» ´øÁ®¼­ À· ÆÇÀ» ÇÑ¹ÙÄû ¸ÕÀú µµ´Â ÆÀÀÌ ÀÌ±ä´Ù.\n");
-	printf("3. À·°ú ¸ð°¡ ³ª¿À¸é ÇÑ¹ø¾¿ ´õ ´øÁø´Ù.\n");
-	printf("4. °¡´Ù°¡ ´Ù¸¥ ÆÀÀÇ ¸» À§¿¡ °ãÄ¡¸é ¿ø·¡ ÀÖ´ø ÆÀÀÇ ¸»ÀÌ ½ÃÀÛÁöÁ¡À¸·Î µ¹¾Æ°£´Ù.\n");
-	printf("5. °¡´Ù°¡ °°Àº ÆÀÀÇ ¸» À§¿¡ °ãÄ¡¸é µÎ ¸»ÀÌ °°ÀÌ ¿òÁ÷ÀÎ´Ù.\n");
-	printf("6. 2Á¡À» ¸ÕÀú ³»´Â ÆÀÀÌ ÀÌ±ä´Ù.");
-	Sleep(5000);
+	printf("-----------\n\nìœ·ë†€ì´ ê·œì¹™\n\n-----------\n");
+	Sleep(3000);
 	system("cls");
-};
+	printf("-<ì´ë™ ìˆ˜>-\n");
+	printf("ë„-1ì¹¸\nê°œ-2ì¹¸\nê±¸-3ì¹¸\nìœ·-4ì¹¸\nëª¨-5ì¹¸\në¹½ë„-ë’¤ë¡œ 1ì¹¸\n\n");
+	Sleep(4000);
+	system("cls");
+	printf("1. ê° íŒ€ì´ ìœ·ì„ ë˜ì ¸ ìž‘ì€ ê°’ì´ ë‚˜ì˜¤ëŠ” íŒ€ì´ ë¨¼ì € í•œë‹¤.\n");
+	Sleep(4000);
+	system("cls");
+	printf("2. ìœ·ì„ ë˜ì ¸ì„œ ìœ· íŒì„ í•œë°”í€´ ë¨¼ì € ë„ëŠ” íŒ€ì´ ì´ê¸´ë‹¤.\n");
+	Sleep(4000);
+	system("cls");
+	printf("3. ìœ·ê³¼ ëª¨ê°€ ë‚˜ì˜¤ë©´ í•œë²ˆì”© ë” ë˜ì§„ë‹¤.\n");
+	Sleep(4000);
+	system("cls");
+	printf("4. ê°€ë‹¤ê°€ ë‹¤ë¥¸ íŒ€ì˜ ë§ ìœ„ì— ê²¹ì¹˜ë©´ ì›ëž˜ ìžˆë˜ íŒ€ì˜ ë§ì´ ì‹œìž‘ì§€ì ìœ¼ë¡œ ëŒì•„ê°„ë‹¤.\n");
+	Sleep(4000);
+	system("cls");
+	printf("5. ê°€ë‹¤ê°€ ê°™ì€ íŒ€ì˜ ë§ ìœ„ì— ê²¹ì¹˜ë©´ ë‘ ë§ì´ ê°™ì´ ì›€ì§ì¸ë‹¤.\n");
+	Sleep(4000);
+	system("cls");
+	printf("6. 2ì ì„ ë¨¼ì € ë‚´ëŠ” íŒ€ì´ ì´ê¸´ë‹¤.");
+	Sleep(4000);
+	system("cls");
+} //main func needs windows.h
