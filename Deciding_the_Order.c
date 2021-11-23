@@ -12,6 +12,7 @@ void Deciding_the_Order(char* name1, char* name2)
 	char four[4] = "윷";
 	char five[4] = "모";
 Ex:
+    system("cls");
 	printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
 	scanf("%c", &act);
 	int yut1 = go[rand() % 16];
@@ -65,6 +66,7 @@ Ex:
 	if (yut1 == yut2)
 	{
 		printf("두 팀의 윷이 같아 재진행합니다!\n\n");
+		Sleep(3000);
 		goto Ex;
 	}
 
@@ -78,4 +80,6 @@ Ex:
 		*name1 = *name2;
 		*name2 = *tmp;
 	}
+	Sleep(3000);
+	system("cls");
 } //main func needs "srand(time(NULL))", team names
