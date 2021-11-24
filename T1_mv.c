@@ -51,15 +51,21 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a) //Tea
 						}
 						else if (*Team1_A == 0 && Team1_a != 0)
 							printf("그 말은 뒤로 갈 수 없습니다.\n\n");
-						else 
+						else
+						{
+							temp1 = *Team1_A;
 							*Team1_A -= 1;
+							temp2 = *Team1_A;
+							movePiece(temp1, temp2, 'A');
+							print_Map(map);
+						}
 					}
 					else
 					{
 						temp1 = *Team1_A;
 						*Team1_A += wantYut;
 						temp2 = *Team1_A;
-						move(temp1, temp2, 'A');
+						movePiece(temp1, temp2, 'A');
 						print_Map(map);
 					}
 					count_ne--;
@@ -90,15 +96,21 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a) //Tea
 					{
 						if (*Team1_A == 0 && *Team1_a == 0)
 							printf("갈 수 있는 말이 없습니다.\n");
-						else 
+						else
+						{
+							temp1 = *Team1_a;
 							*Team1_a -= 1;
+							temp2 = *Team1_a;
+							movePiece(temp1, temp2, 'a');
+							print_Map(map);
+						}
 					}
 					else
 					{
 						temp1 = *Team1_a;
 						*Team1_a += wantYut;
 						temp2 = *Team1_a;
-						move(temp1, temp2, 'a');
+						movePiece(temp1, temp2, 'a');
 						print_Map(map);
 					}
 					count_ne--;
