@@ -24,7 +24,8 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b) //Tea
 			break;
 		}
 
-		printf("\n(도=1, 개=2, 걸=3, 윷=4, 모=5, 빽도=6)(B/b)\n쓰고 싶은 윷,말>> ");
+		printf("\n(도=1, 개=2, 걸=3, 윷=4, 모=5, 빽도=6)(B/b)\n윷은 윷에 해당되는 숫자를, 말은 B와b 중 하나를 골라 이어서 입력해주세요 (ex : 2b, 3B)\n쓰고 싶은 윷,말>> ");
+
 
 		scanf("%d%c", &wantYut, &wantPiece);
 
@@ -95,7 +96,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b) //Tea
 					{
 						if (*Team2_B == 0 && *Team2_b == 0)
 							printf("갈 수 있는 말이 없습니다.\n\n");
-						else 
+						else
 						{
 							temp1 = *Team2_b;
 							*Team2_b -= 1;
@@ -122,7 +123,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b) //Tea
 				}
 			}
 		}
-		else 
+		else
 		{
 			printf("그런 말은 없습니다.\n\n");
 			goto RE;

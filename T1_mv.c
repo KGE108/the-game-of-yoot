@@ -7,7 +7,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a) //Tea
 	{
 		int wantYut = 0;
 
-	RE: 
+	RE:
 		printf("\n남은 윷: ");
 			for (int i = 0; i < count; i++)
 			{
@@ -25,7 +25,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a) //Tea
 				break;
 			}
 
-		printf("\n(도=1, 개=2, 걸=3, 윷=4, 모=5, 빽도=6)(A/a)\n쓰고 싶은 윷,말>> ");
+		printf("\n(도=1, 개=2, 걸=3, 윷=4, 모=5, 빽도=6)(A/a)\n윷은 윷에 해당되는 숫자를, 말은 A와a 중 하나를 골라 이어서 입력해주세요 (ex : 2a, 3A)\n쓰고 싶은 윷,말>> ");
 
 		scanf("%d%c", &wantYut, &wantPiece);
 
