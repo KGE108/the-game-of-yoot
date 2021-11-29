@@ -1,0 +1,505 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <time.h>
+#include <string.h>
+#include "map.h"
+
+void Rules(void)
+{
+    printf("-----------\n\n윷놀이 규칙\n\n-----------\n");
+    printf("-<이동 수>-\n");
+    printf("도-1칸\n개-2칸\n걸-3칸\n윷-4칸\n모-5칸\n빽도-뒤로 1칸\n\n");
+    Sleep(8000);
+    system("cls");
+    printf("-----------\n\n윷놀이 규칙\n\n-----------\n");
+    printf("1. 각 팀이 윷을 던져 작은 값이 나오는 팀이 먼저 한다.\n");
+    printf("2. 윷을 던져서 윷 판을 한바퀴 먼저 도는 팀이 이긴다.\n");
+    printf("3. 윷과 모가 나오면 한번씩 더 던진다.\n");
+    printf("4. 가다가 다른 팀의 말 위에 겹치면 원래 있던 팀의 말이 시작지점으로 돌아간다.\n");
+    printf("5. 가다가 같은 팀의 말 위에 겹치면 두 말이 같이 움직인다.\n");
+    printf("6. 2점을 먼저 내는 팀이 이긴다.");
+    Sleep(2000);
+    system("cls");
+}
+
+void init_Map(char map[6][6])
+{
+    for (int i = 0; i < 6; i++)
+    {
+        for (int j = 0; j < 6; j++)
+        {
+            if (i == 0 || i == 5)
+            {
+                map[i][j] = 'O';
+            }
+            else if (j == 0 || j == 5)
+            {
+                map[i][j] = 'O';
+            }
+            else
+                map[i][j] = ' ';
+        }
+    }
+}
+
+void print_Map(char map[6][6])
+{
+    printf("\n");
+    for (int i = 0; i < 6; i++)
+    {
+        for (int j = 0; j < 6; j++)
+        {
+            printf("%c ", map[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void Deciding_the_Order(char* name1, char* name2)
+{
+
+    int go[16] = { 1,1,1,2,2,2,2,2,2,3,3,3,3,4,5,0 };
+    char act;
+    char name_yut1[20];
+    char name_yut2[20];
+    char zero[10] = "빽도";
+    char one[4] = "도";
+    char two[4] = "개";
+    char three[4] = "걸";
+    char four[4] = "윷";
+    char five[4] = "모";
+Ex:
+    system("cls");
+    printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
+    scanf("%c", &act);
+    int yut1 = go[rand() % 16];
+    switch (yut1)
+    {
+    case 0:
+        strcpy(name_yut1, zero);
+        break;
+    case 1:
+        strcpy(name_yut1, one);
+        break;
+    case 2:
+        strcpy(name_yut1, two);
+        break;
+    case 3:
+        strcpy(name_yut1, three);
+        break;
+    case 4:
+        strcpy(name_yut1, four);
+        break;
+    case 5:
+        strcpy(name_yut1, five);
+        break;
+    }
+    printf("------------------------------\n%s의 윷: %s\n------------------------------\n\n\n", name1, name_yut1);
+    printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
+    scanf("%c", &act);
+    int yut2 = go[rand() % 16];
+    switch (yut2)
+    {
+    case 0:
+        strcpy(name_yut2, zero);
+        break;
+    case 1:
+        strcpy(name_yut2, one);
+        break;
+    case 2:
+        strcpy(name_yut2, two);
+        break;
+    case 3:
+        strcpy(name_yut2, three);
+        break;
+    case 4:
+        strcpy(name_yut2, four);
+        break;
+    case 5:
+        strcpy(name_yut2, five);
+        break;
+    }
+    printf("------------------------------\n%s의 윷: %s\n------------------------------\n\n\n", name2, name_yut2);
+    if (yut1 == yut2)
+    {
+        printf("두 팀의 윷이 같아 재진행합니다!\n\n");
+        Sleep(3000);
+        goto Ex;
+    }
+
+    if (yut1 < yut2) printf("%s의 선입니다!\n\n\n", name1);
+
+    if (yut1 > yut2)
+    {
+        char tmp[20];
+        printf("%s의 선입니다!\n\n\n", name2);
+        *tmp = *name1;
+        *name1 = *name2;
+        *name2 = *tmp;
+    }
+    Sleep(3000);
+    system("cls");
+} //main func needs "srand(time(NULL))", team names
+
+void movePiece(int source, int dest, char piece)
+{
+    if (dest > 20)
+    {
+        *mapptr[source] = 'O';
+        return;
+    }
+    *mapptr[source] = 'O';
+    *mapptr[dest] = piece;
+}
+
+
+void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a) //Team 1 말 이동
+{
+    int count_ne = count;
+    int temp1, temp2;
+    char wantPiece;
+    while (count_ne != 0)
+    {
+        int wantYut = 0;
+
+    RE:
+        printf("\n남은 윷: ");
+        for (int i = 0; i < count; i++)
+        {
+            if (yut_array[i] == 1) printf("도 ");
+            if (yut_array[i] == 2) printf("개 ");
+            if (yut_array[i] == 3) printf("걸 ");
+            if (yut_array[i] == 4) printf("윳 ");
+            if (yut_array[i] == 5) printf("모 ");
+            if (yut_array[i] == 6) printf("빽도 ");
+        }
+
+        if (*Team1_A == 0 && *Team1_a == 0 && yut_array[0] == 6)
+        {
+            printf("\n\n갈 수 있는 말이 없습니다.\n\n");
+            break;
+        }
+
+        printf("\n(도=1, 개=2, 걸=3, 윷=4, 모=5, 빽도=6)(A/a)\n쓰고 싶은 윷,말>> ");
+
+        scanf("%d%c", &wantYut, &wantPiece);
+
+        if (wantPiece == 'A')
+        {
+            if (*Team1_A > 20)
+            {
+                printf("\n\n이미 난 말 입니다\n\n");
+                goto RE;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (yut_array[i] == wantYut)
+                {
+                    yut_array[i] = 0;
+                    if (wantYut == 6)
+                    {
+                        if (*Team1_A == 0 && *Team1_a == 0)
+                        {
+                            printf("갈 수 있는 말이 없습니다.\n\n");
+                            break;
+                        }
+                        else if (*Team1_A == 0 && Team1_a != 0)
+                            printf("그 말은 뒤로 갈 수 없습니다.\n\n");
+                        else
+                        {
+                            temp1 = *Team1_A;
+                            *Team1_A -= 1;
+                            temp2 = *Team1_A;
+                            movePiece(temp1, temp2, 'A');
+                            print_Map(map);
+                        }
+                    }
+                    else
+                    {
+                        temp1 = *Team1_A;
+                        *Team1_A += wantYut;
+                        temp2 = *Team1_A;
+                        movePiece(temp1, temp2, 'A');
+                        print_Map(map);
+                    }
+                    count_ne--;
+                    break;
+                }
+                else if (i == count - 1)
+                {
+                    printf("\n그 윷은 던진 적이 없습니다.\n\n");
+                    break;
+                }
+            }
+        }
+
+        else if (wantPiece == 'a')
+        {
+            if (*Team1_a > 20)
+            {
+                printf("\n\n이미 난 말 입니다\n\n");
+                goto RE;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (yut_array[i] == wantYut)
+                {
+                    yut_array[i] = 0;
+                    if (wantYut == 6)
+                    {
+                        if (*Team1_A == 0 && *Team1_a == 0)
+                            printf("갈 수 있는 말이 없습니다.\n");
+                        else
+                        {
+                            temp1 = *Team1_a;
+                            *Team1_a -= 1;
+                            temp2 = *Team1_a;
+                            movePiece(temp1, temp2, 'a');
+                            print_Map(map);
+                        }
+                    }
+                    else
+                    {
+                        temp1 = *Team1_a;
+                        *Team1_a += wantYut;
+                        temp2 = *Team1_a;
+                        movePiece(temp1, temp2, 'a');
+                        print_Map(map);
+                    }
+                    count_ne--;
+                    break;
+                }
+                else if (i == count - 1)
+                {
+                    printf("\n그 윷은 던진 적이 없습니다.\n\n");
+                    break;
+                }
+            }
+        }
+        else
+        {
+            printf("그런 말은 없습니다.\n\n");
+            goto RE;
+        }
+    }
+}
+
+void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b) //Team 2 말 이동
+{
+    int count_ne = count;
+    int temp1, temp2;
+    char wantPiece;
+    while (count_ne != 0)
+    {
+        int wantYut = 0;
+    RE:
+        printf("\n남은 윷: ");
+        for (int i = 0; i < count; i++)
+        {
+            if (yut_array[i] == 1) printf("도 ");
+            if (yut_array[i] == 2) printf("개 ");
+            if (yut_array[i] == 3) printf("걸 ");
+            if (yut_array[i] == 4) printf("윳 ");
+            if (yut_array[i] == 5) printf("모 ");
+            if (yut_array[i] == 6) printf("빽도 ");
+        }
+
+        if (*Team2_B == 0 && *Team2_b == 0 && yut_array[0] == 6)
+        {
+            printf("\n\n갈 수 있는 말이 없습니다.\n\n");
+            break;
+        }
+
+        printf("\n(도=1, 개=2, 걸=3, 윷=4, 모=5, 빽도=6)(B/b)\n쓰고 싶은 윷,말>> ");
+
+        scanf("%d%c", &wantYut, &wantPiece);
+
+        if (wantPiece == 'B')
+        {
+            if (*Team2_B > 20)
+            {
+                printf("\n\n이미 난 말 입니다\n\n");
+                goto RE;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (yut_array[i] == wantYut)
+                {
+                    yut_array[i] = 0;
+                    if (wantYut == 6)
+                    {
+                        if (*Team2_B == 0 && *Team2_b == 0)
+                        {
+                            printf("갈 수 있는 말이 없습니다.\n\n");
+                            break;
+                        }
+                        else if (*Team2_B == 0 && Team2_b != 0)
+                            printf("그 말은 뒤로 갈 수 없습니다.\n\n");
+                        else
+                        {
+                            temp1 = *Team2_B;
+                            *Team2_B -= 1;
+                            temp2 = *Team2_B;
+                            movePiece(temp1, temp2, 'B');
+                            print_Map(map);
+                        }
+                    }
+                    else
+                    {
+                        temp1 = *Team2_B;
+                        *Team2_B += wantYut;
+                        temp2 = *Team2_B;
+                        movePiece(temp1, temp2, 'B');
+                        print_Map(map);
+                    }
+                    count_ne--;
+                    break;
+                }
+                else if (i == count - 1)
+                {
+                    printf("그 윷은 던진 적이 없습니다.\n\n");
+                    break;
+                }
+            }
+        }
+
+        else if (wantPiece == 'b')
+        {
+            if (*Team2_b > 20)
+            {
+                printf("\n\n이미 난 말 입니다\n\n");
+                goto RE;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (yut_array[i] == wantYut)
+                {
+                    yut_array[i] = 0;
+                    if (wantYut == 6)
+                    {
+                        if (*Team2_B == 0 && *Team2_b == 0)
+                            printf("갈 수 있는 말이 없습니다.\n\n");
+                        else
+                        {
+                            temp1 = *Team2_b;
+                            *Team2_b -= 1;
+                            temp2 = *Team2_b;
+                            movePiece(temp1, temp2, 'b');
+                            print_Map(map);
+                        }
+                    }
+                    else
+                    {
+                        temp1 = *Team2_b;
+                        *Team2_b += wantYut;
+                        temp2 = *Team2_b;
+                        movePiece(temp1, temp2, 'b');
+                        print_Map(map);
+                    }
+                    count_ne--;
+                    break;
+                }
+                else if (i == count - 1)
+                {
+                    printf("\n그 윷은 던진 적이 없습니다.\n\n");
+                    break;
+                }
+            }
+        }
+        else
+        {
+            printf("그런 말은 없습니다.\n\n");
+            goto RE;
+        }
+    }
+}
+
+
+void Throwing_Yuts(int* yut_array, int* count)
+{
+    const int go[16] = { 1,1,1,2,2,2,2,2,2,3,3,3,3,4,5,6 };
+    int state = 0, i = 0;
+    yut_array[20] = { 0, };
+    char act;
+    printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
+    scanf("%c", &act);
+    while (1)
+    {
+        int yut = go[rand() % 16];
+        state = 0;
+        switch (yut)
+        {
+        case 1:
+            yut_array[i] = yut;
+            printf("도!\n");
+            break;
+        case 2:
+            yut_array[i] = yut;
+            printf("개!\n");
+            break;
+        case 3:
+            yut_array[i] = yut;
+            printf("걸!\n");
+            break;
+        case 4:
+            yut_array[i] = yut;
+            printf("윷!\n");
+            i++;
+            state = 1;
+            break;
+        case 5:
+            yut_array[i] = yut;
+            printf("모!\n");
+            i++;
+            state = 1;
+            break;
+        case 6:
+            yut_array[i] = yut;
+            printf("빽도!\n");
+            break;
+        }
+        if (state == 0) break;
+    }
+    *count = i + 1;
+}
+
+int main(void)
+{
+    init_Map(map);
+    Rules();
+    srand((unsigned int)time(NULL));
+    int yut_array[10] = { 0, };
+    int count = 0;
+    int Team1_A = 0, Team1_a = 0, Team2_B = 0, Team2_b = 0;
+
+    while (1)
+    {
+
+        Throwing_Yuts(yut_array, &count);
+        Team1_Go_Piece(yut_array, count, &Team1_A, &Team1_a);
+        printf("\n");
+
+
+        if (Team1_A > 20 && Team2_B > 20)
+        {
+            printf("\n\n축하합니다 !! Team1의 승리입니다!");
+            break;
+        }
+        Throwing_Yuts(yut_array, &count);
+        Team2_Go_Piece(yut_array, count, &Team2_B, &Team2_b);
+        printf("\n");
+        printf("\n\n현재 말 위치 : %d %d %d %d\n\n", Team1_A, Team1_a, Team2_B, Team2_b);
+
+        if (Team2_B > 20 && Team2_b > 20)
+        {
+            printf("\n\n축하합니다 !! Team2의 승리입니다!");
+            break;
+        }
+    }
+}
