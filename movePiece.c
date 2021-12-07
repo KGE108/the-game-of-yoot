@@ -1,6 +1,6 @@
 void movePiece(int source, int dest, char piece)
 {
-	if(dest > 20)
+	if(dest > 19)
 	{
 		*mapptr[source] = 'O';
 		return;
