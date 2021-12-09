@@ -15,6 +15,7 @@ Ex:
     system("cls");
 	printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
 	scanf("%c", &act);
+	getchar();
 	int yut1 = go[rand() % 16];
 	switch (yut1)
 	{
