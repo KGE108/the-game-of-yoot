@@ -70,9 +70,9 @@ Ex:
 		goto Ex;
 	}
 
-	if (yut1 < yut2) printf("%s의 선입니다!\n\n\n", name1);
+	if (yut1 > yut2) printf("%s의 선입니다!\n\n\n", name1);
 
-	if (yut1 > yut2)
+	if (yut1 < yut2)
 	{
 		char tmp[20];
 		printf("%s의 선입니다!\n\n\n", name2);
