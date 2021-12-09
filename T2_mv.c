@@ -33,6 +33,8 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b) //Tea
 		{
 			if (*Team2_B > 20)
 			{
+				if(*Team2_b > 20)
+                    break;
 				printf("\n\n이미 난 말 입니다\n\n");
 				goto RE;
 			}
@@ -83,6 +85,8 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b) //Tea
 		{
 			if (*Team2_b > 20)
 			{
+				if(*Team2_B > 20)
+                    break;
 				printf("\n\n이미 난 말 입니다\n\n");
 				goto RE;
 			}
