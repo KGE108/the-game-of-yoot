@@ -6,6 +6,7 @@ void Throwing_Yuts(int* yut_array, int *count)
 	char act;
 	printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
 	scanf("%c",&act);
+	getchar();
 	while (1)
 	{
 		int yut = go[rand() % 16];
