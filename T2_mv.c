@@ -24,7 +24,9 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b) //Tea
             break;
         }
 
+        printf("\n\n윷은 윷에 해당되는 숫자를, 말은 B와b 중 하나를 골라 이어서 입력해주세요( ex : 2b or 3B)");
         printf("\n(도=1, 개=2, 걸=3, 윷=4, 모=5, 빽도=6)(B/b)\n쓰고 싶은 윷,말>> ");
+
 
         scanf("%d%c", &wantYut, &wantPiece);
 
