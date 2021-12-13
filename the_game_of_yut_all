@@ -60,92 +60,6 @@ void print_Map(char map[6][6])
     }
 }
 
-void Deciding_the_Order(char* name1, char* name2)
-{
-
-    int go[16] = { 1,1,1,2,2,2,2,2,2,3,3,3,3,4,5,0 };
-    char act;
-    char name_yut1[20];
-    char name_yut2[20];
-    char zero[10] = "빽도";
-    char one[4] = "도";
-    char two[4] = "개";
-    char three[4] = "걸";
-    char four[4] = "윷";
-    char five[4] = "모";
-Ex:
-    system("cls");
-    printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
-    scanf("%c", &act);
-    int yut1 = go[rand() % 16];
-    switch (yut1)
-    {
-    case 0:
-        strcpy(name_yut1, zero);
-        break;
-    case 1:
-        strcpy(name_yut1, one);
-        break;
-    case 2:
-        strcpy(name_yut1, two);
-        break;
-    case 3:
-        strcpy(name_yut1, three);
-        break;
-    case 4:
-        strcpy(name_yut1, four);
-        break;
-    case 5:
-        strcpy(name_yut1, five);
-        break;
-    }
-    printf("------------------------------\n%s의 윷: %s\n------------------------------\n\n\n", name1, name_yut1);
-    printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
-    scanf("%c", &act);
-    int yut2 = go[rand() % 16];
-    switch (yut2)
-    {
-    case 0:
-        strcpy(name_yut2, zero);
-        break;
-    case 1:
-        strcpy(name_yut2, one);
-        break;
-    case 2:
-        strcpy(name_yut2, two);
-        break;
-    case 3:
-        strcpy(name_yut2, three);
-        break;
-    case 4:
-        strcpy(name_yut2, four);
-        break;
-    case 5:
-        strcpy(name_yut2, five);
-        break;
-    }
-    printf("------------------------------\n%s의 윷: %s\n------------------------------\n\n\n", name2, name_yut2);
-    if (yut1 == yut2)
-    {
-        printf("두 팀의 윷이 같아 재진행합니다!\n\n");
-        Sleep(3000);
-        goto Ex;
-    }
-
-    if (yut1 < yut2) printf("%s의 선입니다!\n\n\n", name1);
-
-    if (yut1 > yut2)
-    {
-        char tmp[20];
-        printf("%s의 선입니다!\n\n\n", name2);
-        *tmp = *name1;
-        *name1 = *name2;
-        *name2 = *tmp;
-    }
-    Sleep(3000);
-    system("cls");
-} //main func needs "srand(time(NULL))", team names
-
 void movePiece(int source, int dest, char piece)
 {
     if (dest > 20)
@@ -417,7 +331,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b) //Tea
                             printf("그 말은 뒤로 갈 수 없습니다.\n\n");
                         else
                         {
-                            if (*Team2_B == *Team2_b&&*Team2_B!=0&&*Team2_b!=0) stacked_B = 'T';
+                            if (*Team2_B == *Team2_b && *Team2_B != 0 && *Team2_b != 0) stacked_B = 'T';
                             if (stacked_B == 'T')
                             {
                                 temp1 = *Team2_B;
@@ -617,36 +531,139 @@ void Throwing_Yuts(int* yut_array, int* count)
     *count = i + 1;
 }
 
+void setTeamName(char* Team1, char* Team2)
+{
+    char Temp[16];
+    printf("\nSet Team1 Name >");
+    scanf("%s", Temp);
+    strcpy(Team1, Temp);
+    printf("\nSet Team2 Name >");
+    scanf("%s", Temp);
+    strcpy(Team2, Temp);
+}
+
+void Deciding_the_Order(char* name1, char* name2)
+{
+
+    int go[16] = { 1,1,1,2,2,2,2,2,2,3,3,3,3,4,5,0 };
+    char act;
+    char name_yut1[20];
+    char name_yut2[20];
+    char zero[10] = "빽도";
+    char one[4] = "도";
+    char two[4] = "개";
+    char three[4] = "걸";
+    char four[4] = "윷";
+    char five[4] = "모";
+Ex:
+    system("cls");
+    printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
+    scanf("%c", &act);
+    getchar();
+    int yut1 = go[rand() % 16];
+    switch (yut1)
+    {
+    case 0:
+        strcpy(name_yut1, zero);
+        break;
+    case 1:
+        strcpy(name_yut1, one);
+        break;
+    case 2:
+        strcpy(name_yut1, two);
+        break;
+    case 3:
+        strcpy(name_yut1, three);
+        break;
+    case 4:
+        strcpy(name_yut1, four);
+        break;
+    case 5:
+        strcpy(name_yut1, five);
+        break;
+    }
+    printf("------------------------------\n%s의 윷: %s\n------------------------------\n\n\n", name1, name_yut1);
+    printf("윷을 던지시려면 엔터를 눌러주세요.\n\n");
+    scanf("%c", &act);
+    int yut2 = go[rand() % 16];
+    switch (yut2)
+    {
+    case 0:
+        strcpy(name_yut2, zero);
+        break;
+    case 1:
+        strcpy(name_yut2, one);
+        break;
+    case 2:
+        strcpy(name_yut2, two);
+        break;
+    case 3:
+        strcpy(name_yut2, three);
+        break;
+    case 4:
+        strcpy(name_yut2, four);
+        break;
+    case 5:
+        strcpy(name_yut2, five);
+        break;
+    }
+    printf("------------------------------\n%s의 윷: %s\n------------------------------\n\n\n", name2, name_yut2);
+    if (yut1 == yut2)
+    {
+        printf("두 팀의 윷이 같아 재진행합니다!\n\n");
+        Sleep(3000);
+        goto Ex;
+    }
+
+    if (yut1 > yut2) printf("%s의 선입니다!\n\n\n", name1);
+
+    if (yut1 < yut2)
+    {
+        char tmp[20];
+        printf("%s의 선입니다!\n\n\n", name2);
+        *tmp = *name1;
+        *name1 = *name2;
+        *name2 = *tmp;
+    }
+    Sleep(3000);
+    system("cls");
+} //main func needs "srand(time(NULL))", team names
+
 int main(void)
 {
     init_Map(map);
     srand((unsigned int)time(NULL));
+
     int yut_array[10] = { 0, };
     int count = 0;
     int Team1_A = 0, Team1_a = 0, Team2_B = 0, Team2_b = 0;
+    char name1[20], name2[20];
 
-    while (1)
-    {
+    Rules();
+    setTeamName(name1, name2);
+    Deciding_the_Order(name1, name2);
 
-        Throwing_Yuts(yut_array, &count);
-        Team1_Go_Piece(yut_array, count, &Team1_A, &Team1_a);
-        printf("\n");
-
-
-        if (Team1_A > 20 && Team2_B > 20)
+        while (1)
         {
-            printf("\n\n축하합니다 !! Team1의 승리입니다!");
-            break;
-        }
-        Throwing_Yuts(yut_array, &count);
-        Team2_Go_Piece(yut_array, count, &Team2_B, &Team2_b);
-        printf("\n");
-        printf("\n\n현재 말 위치 : %d %d %d %d\n\n", Team1_A, Team1_a, Team2_B, Team2_b);
+            Throwing_Yuts(yut_array, &count);
+            Team1_Go_Piece(yut_array, count, &Team1_A, &Team1_a);
+            printf("\n");
 
-        if (Team2_B > 20 && Team2_b > 20)
-        {
-            printf("\n\n축하합니다 !! Team2의 승리입니다!");
-            break;
+
+            if (Team1_A > 20 && Team2_B > 20)
+            {
+                printf("\n\n축하합니다 !! Team1의 승리입니다!");
+                break;
+            }
+            Throwing_Yuts(yut_array, &count);
+            Team2_Go_Piece(yut_array, count, &Team2_B, &Team2_b);
+            printf("\n");
+            printf("\n\n현재 말 위치 : %d %d %d %d\n\n", Team1_A, Team1_a, Team2_B, Team2_b);
+
+            if (Team2_B > 20 && Team2_b > 20)
+            {
+                printf("\n\n축하합니다 !! Team2의 승리입니다!");
+                break;
+            }
         }
-    }
 }
