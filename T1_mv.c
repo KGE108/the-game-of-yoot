@@ -24,8 +24,9 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a) //Tea
             printf("\n\n갈 수 있는 말이 없습니다.\n\n");
             break;
         }
-
+        printf("\n\n윷은 윷에 해당되는 숫자를, 말은 A와a 중 하나를 골라 이어서 입력해주세요( ex : 2a or 3A)");
         printf("\n(도=1, 개=2, 걸=3, 윷=4, 모=5, 빽도=6)(A/a)\n쓰고 싶은 윷,말>> ");
+        
 
         scanf("%d%c", &wantYut, &wantPiece);
 
