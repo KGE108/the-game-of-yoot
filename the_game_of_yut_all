@@ -913,7 +913,7 @@ int main()
     int Team1_A = 0, Team1_a = 0, Team2_B = 0, Team2_b = 0;
     char name1[20], name2[20];
 
-    Rules();
+    //Rules();
     setTeamName(name1, name2);
     Deciding_the_Order(name1, name2);
 
@@ -940,14 +940,14 @@ int main()
         }
 
         Throwing_Yuts(yut_array, &count, name2);
-        Team1_Go_Piece(yut_array, count, &Team1_A, &Team1_a, &Team2_B, &Team2_b);
+        Team2_Go_Piece(yut_array, count, &Team2_B, &Team2_b, &Team1_A, &Team1_a);
         do
         {
             if (Token_B == 'T')
             {
                 Token_B = 'F';
                 Throwing_Yuts(yut_array, &count, name2);
-                Team1_Go_Piece(yut_array, count, &Team1_A, &Team1_a, &Team2_B, &Team2_b);
+                Team2_Go_Piece(yut_array, count, &Team2_B, &Team2_b, &Team1_A, &Team1_a);
             }
         } while (Token_B == 'T');
         printf("\n");
