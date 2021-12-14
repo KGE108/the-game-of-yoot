@@ -914,7 +914,7 @@ int main()
     int Team1_A = 0, Team1_a = 0, Team2_B = 0, Team2_b = 0;
     char name1[20], name2[20];
 
-    //Rules();
+    Rules();
     setTeamName(name1, name2);
     Deciding_the_Order(name1, name2);
 
