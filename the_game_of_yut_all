@@ -10,6 +10,7 @@ char stacked_A = 'F';
 char stacked_B = 'F';
 char Token_A = 'F';
 char Token_B = 'F';
+int yut1,yut2;
 
 void Rules(void)
 {
@@ -835,7 +836,7 @@ Ex:
     printf("%s! 윷을 던지시려면 엔터를 눌러주세요.\n\n", name1);
     scanf("%c", &act);
     getchar();
-    int yut1 = go[rand() % 16];
+    yut1 = go[rand() % 16];
     switch (yut1)
     {
     case 0:
@@ -860,7 +861,7 @@ Ex:
     printf("------------------------------\n%s의 윷: %s\n------------------------------\n\n\n", name1, name_yut1);
     printf("%s! 윷을 던지시려면 엔터를 눌러주세요.\n\n", name2);
     scanf("%c", &act);
-    int yut2 = go[rand() % 16];
+    yut2 = go[rand() % 16];
     switch (yut2)
     {
     case 0:
@@ -917,7 +918,13 @@ int main()
     Rules();
     setTeamName(name1, name2);
     Deciding_the_Order(name1, name2);
-
+    
+    if (yut1>yut2)
+    {
+        Throwing_Yuts(yut_array, &count, name1);
+        Team2_Go_Piece(yut_array, count, &Team2_B, &Team2_b, &Team1_A, &Team1_a);
+    }
+    
     while (1)
     {
         Throwing_Yuts(yut_array, &count, name1);
