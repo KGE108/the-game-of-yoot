@@ -897,9 +897,6 @@ Ex:
     {
         char tmp[20];
         printf("%s의 선입니다!\n\n\n", name2);
-        *tmp = *name1;
-        *name1 = *name2;
-        *name2 = *tmp;
     }
     Sleep(3000);
     system("cls");
