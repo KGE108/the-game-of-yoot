@@ -11,13 +11,14 @@ char stacked_B = 'F';
 char Token_A = 'F';
 char Token_B = 'F';
 int yut1,yut2;
+int score1=0, score2=0;
 
 void Rules(void)
 {
     printf("-----------\n\n윷놀이 규칙\n\n-----------\n");
     printf("-<이동 수>-\n");
     printf("도-1칸\n개-2칸\n걸-3칸\n윷-4칸\n모-5칸\n빽도-뒤로 1칸\n\n");
-    Sleep(8000);
+    system("pause>null");
     system("cls");
     printf("-----------\n\n윷놀이 규칙\n\n-----------\n");
     printf("1. 각 팀이 윷을 던져 작은 값이 나오는 팀이 먼저 한다.\n");
@@ -26,7 +27,7 @@ void Rules(void)
     printf("4. 가다가 다른 팀의 말 위에 겹치면 원래 있던 팀의 말이 시작지점으로 돌아간다.\n");
     printf("5. 가다가 같은 팀의 말 위에 겹치면 두 말이 같이 움직인다.\n");
     printf("6. 2점을 먼저 내는 팀이 이긴다.");
-    Sleep(20000);
+    system("pause>null");
     system("cls");
 }
 
@@ -85,6 +86,9 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
         int wantYut = 0;
 
     RE:
+        printf("\n");
+        print_Map(map);
+        printf("\n\n------------------------------\n\n");
         printf("\n남은 윷: ");
         for (int i = 0; i < count; i++)
         {
@@ -156,7 +160,6 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                     *Team2_b = 0;
                                     stacked_B = 'F';
                                 }
-                                print_Map(map);
                             }
                             else
                             {
@@ -186,7 +189,6 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                     stacked_A = 'T';
                                     movePiece(*Team1_A, *Team1_A, 'C', Team1_A);
                                 }
-                                print_Map(map);
                             }
                         }
                     }
@@ -217,7 +219,6 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                 *Team2_b = 0;
                                 stacked_B = 'F';
                             }
-                            print_Map(map);
                         }
                         else
                         {
@@ -247,7 +248,6 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                 stacked_A = 'T';
                                 movePiece(*Team1_A, *Team1_A, 'C', Team1_A);
                             }
-                            print_Map(map);
                         }
                     }
                     count_ne--;
@@ -259,6 +259,8 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                     break;
                 }
             }
+            system("pause>null");
+            system("cls");
         }
 
         else if (wantPiece == 'a')
@@ -277,7 +279,10 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                     if (wantYut == 6)
                     {
                         if (*Team1_A == 0 && *Team1_a == 0)
+                        {
                             printf("갈 수 있는 말이 없습니다.\n");
+                            goto RE;
+                        }
                         else
                         {
                             if (*Team1_A == *Team1_a && *Team1_A != 0 && *Team1_a != 0) stacked_A = 'T';
@@ -305,7 +310,6 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                     *Team2_b = 0;
                                     stacked_B = 'F';
                                 }
-                                print_Map(map);
                             }
                             else
                             {
@@ -335,7 +339,6 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                     stacked_A = 'T';
                                     movePiece(*Team1_A, *Team1_A, 'C', Team1_a);
                                 }
-                                print_Map(map);
                             }
                         }
                     }
@@ -366,7 +369,6 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                 *Team2_b = 0;
                                 stacked_B = 'F';
                             }
-                            print_Map(map);
                         }
                         else
                         {
@@ -396,7 +398,6 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                 stacked_A = 'T';
                                 movePiece(*Team1_A, *Team1_A, 'C', Team1_a);
                             }
-                            print_Map(map);
                         }
                     }
                     count_ne--;
@@ -414,7 +415,9 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
             printf("그런 말은 없습니다.\n\n");
             goto RE;
         }
+        system("cls");
     }
+    system("cls");
 }
 
 void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* Team1_A, int* Team1_a) //Team 2 말 이동
@@ -426,6 +429,9 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
     {
         int wantYut = 0;
     RE:
+        printf("\n");
+        print_Map(map);
+        printf("\n\n------------------------------\n\n");
         printf("\n남은 윷: ");
         for (int i = 0; i < count; i++)
         {
@@ -497,7 +503,6 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                     *Team1_a = 0;
                                     stacked_A = 'F';
                                 }
-                                print_Map(map);
                             }
                             else
                             {
@@ -527,7 +532,6 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                     stacked_B = 'T';
                                     movePiece(*Team2_B, *Team2_b, 'D', Team2_B);
                                 }
-                                print_Map(map);
                             }
                         }
                     }
@@ -558,7 +562,6 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                 *Team1_a = 0;
                                 stacked_A = 'F';
                             }
-                            print_Map(map);
                         }
                         else
                         {
@@ -588,7 +591,6 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                 stacked_B = 'T';
                                 movePiece(*Team2_B, *Team2_b, 'D', Team2_B);
                             }
-                            print_Map(map);
                         }
                     }
                     count_ne--;
@@ -646,7 +648,6 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                     *Team1_a = 0;
                                     stacked_A = 'F';
                                 }
-                                print_Map(map);
                             }
                             else
                             {
@@ -676,7 +677,6 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                     stacked_B = 'T';
                                     movePiece(*Team2_B, *Team2_b, 'D', Team2_b);
                                 }
-                                print_Map(map);
                             }
                         }
                     }
@@ -707,7 +707,6 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                 *Team1_a = 0;
                                 stacked_A = 'F';
                             }
-                            print_Map(map);
                         }
                         else
                         {
@@ -737,7 +736,6 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                 stacked_B = 'T';
                                 movePiece(*Team2_B, *Team2_b, 'D', Team2_b);
                             }
-                            print_Map(map);
                         }
                     }
                     count_ne--;
@@ -755,8 +753,9 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
             printf("그런 말은 없습니다.\n\n");
             goto RE;
         }
-
+        system("cls");
     }
+    system("cls");
 }
 
 void Throwing_Yuts(int* yut_array, int* count, char *name)
@@ -765,6 +764,9 @@ void Throwing_Yuts(int* yut_array, int* count, char *name)
     int state = 0, i = 0;
     yut_array[20] = { 0, };
     char act;
+    printf("\n");
+    print_Map(map);
+    printf("\n\n------------------------------\n\n");
     printf("%s! 윷을 던지시려면 엔터를 눌러주세요.\n\n", name);
     scanf("%c", &act);
     while (1)
@@ -805,6 +807,8 @@ void Throwing_Yuts(int* yut_array, int* count, char *name)
         if (state == 0) break;
     }
     *count = i + 1;
+    system("pause>null");
+    system("cls");
 }
 
 void setTeamName(char* Team1, char* Team2)
@@ -902,15 +906,30 @@ Ex:
     system("cls");
 } //main func needs "srand(time(NULL))", team names
 
+void Score(int* Team1_A, int* Team1_a, int* Team2_B, int* Team2_b, char* name1, char* name2)
+{
+    if (*Team1_A > 20 || *Team1_a > 20) {
+        score1++;
+    }
+    else if (*Team1_A > 20 && *Team1_a > 20)
+        score1 + 2;
+    if (*Team2_B > 20 || *Team2_b > 20) {
+        score2++;
+    }
+    else if (*Team2_B > 20 && *Team2_b > 20)
+        score2 + 2;
+    printf("%s팀 점수 : %d\n%s팀 점수 : %d", name1, score1, name2, score2);
+}
+
 int main()
 {
-    init_Map(map);
-    srand((unsigned int)time(NULL));
-
     int yut_array[10] = { 0, };
     int count = 0;
     int Team1_A = 0, Team1_a = 0, Team2_B = 0, Team2_b = 0;
     char name1[20], name2[20];
+    
+    init_Map(map);
+    srand((unsigned int)time(NULL));
 
     Rules();
     setTeamName(name1, name2);
@@ -924,7 +943,9 @@ int main()
     
     while (1)
     {
+        Score(&Team1_A, &Team1_a, &Team2_B, &Team2_b, name1, name2);
         Throwing_Yuts(yut_array, &count, name1);
+        Score(&Team1_A, &Team1_a, &Team2_B, &Team2_b, name1, name2); 
         Team1_Go_Piece(yut_array, count, &Team1_A, &Team1_a, &Team2_B, &Team2_b);
         do
         {
@@ -943,8 +964,9 @@ int main()
             printf("\n\n축하합니다 !! %s의 승리입니다!", name1);
             break;
         }
-
+        Score(&Team1_A, &Team1_a, &Team2_B, &Team2_b, name1, name2);
         Throwing_Yuts(yut_array, &count, name2);
+        Score(&Team1_A, &Team1_a, &Team2_B, &Team2_b, name1, name2);
         Team2_Go_Piece(yut_array, count, &Team2_B, &Team2_b, &Team1_A, &Team1_a);
         do
         {
