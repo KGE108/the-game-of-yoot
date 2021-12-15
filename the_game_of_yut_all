@@ -921,7 +921,7 @@ int main()
     
     if (yut1>yut2)
     {
-        Throwing_Yuts(yut_array, &count, name1);
+        Throwing_Yuts(yut_array, &count, name2);
         Team2_Go_Piece(yut_array, count, &Team2_B, &Team2_b, &Team1_A, &Team1_a);
     }
     
