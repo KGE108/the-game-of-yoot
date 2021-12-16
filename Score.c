@@ -20,5 +20,4 @@ void Score(int* Team1_A, int* Team1_a, int* Team2_B, int* Team2_b, char* name1, 
     }
     else if (*Team2_B > 20 && *Team2_b > 20)
         score2 = score2 + 2;
-    printf("\n%s팀 점수 : %d\n%s팀 점수 : %d\n", name1, score1, name2, score2);
 }
