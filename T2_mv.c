@@ -6,7 +6,13 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
     while (count_ne != 0)
     {
         int wantYut = 0;
+        if(*Team1_A > 20 && *Team1_a > 20)
+            break;
+            
     RE:
+        printf("\n");
+        print_Map(map);
+        printf("\n\n------------------------------\n\n");
         printf("\n남은 윷: ");
         for (int i = 0; i < count; i++)
         {
@@ -49,8 +55,12 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                             printf("갈 수 있는 말이 없습니다.\n\n");
                             break;
                         }
-                        else if (*Team2_B == 0 && Team2_b != 0)
+                        if (*Team2_B == 0 && *Team2_b != 0)
+                        {
                             printf("그 말은 뒤로 갈 수 없습니다.\n\n");
+                            yut_array[i] = 6;
+                            goto RE;
+                        }
                         else
                         {
                             if (*Team2_B == *Team2_b && *Team2_B != 0 && *Team2_b != 0) stacked_B = 'T';
@@ -60,7 +70,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                 *Team2_B -= 1;
                                 temp2 = *Team2_B;
                                 *Team2_b = temp2;
-                                movePiece(temp1, temp2, 'D');
+                                movePiece(temp1, temp2, 'D', Team2_B);
                                 if (*Team2_B == *Team1_A && *Team1_A != *Team1_a)
                                 {
                                     Token_B = 'T';
@@ -78,14 +88,13 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                     *Team1_a = 0;
                                     stacked_A = 'F';
                                 }
-                                print_Map(map);
                             }
                             else
                             {
                                 temp1 = *Team2_B;
                                 *Team2_B -= 1;
                                 temp2 = *Team2_B;
-                                movePiece(temp1, temp2, 'B');
+                                movePiece(temp1, temp2, 'B', Team2_B);
                                 if (*Team2_B == *Team1_A && *Team1_A != *Team1_a)
                                 {
                                     Token_B = 'T';
@@ -106,9 +115,8 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                 if (*Team2_B == *Team2_b && *Team2_B != 0 && *Team2_b != 0)
                                 {
                                     stacked_B = 'T';
-                                    movePiece(*Team2_B, *Team2_b, 'D');
+                                    movePiece(*Team2_B, *Team2_b, 'D', Team2_B);
                                 }
-                                print_Map(map);
                             }
                         }
                     }
@@ -121,7 +129,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                             *Team2_B += wantYut;
                             temp2 = *Team2_B;
                             *Team2_b = temp2;
-                            movePiece(temp1, temp2, 'D');
+                            movePiece(temp1, temp2, 'D', Team2_B);
                             if (*Team2_B == *Team1_A && *Team1_A != *Team1_a)
                             {
                                 Token_B = 'T';
@@ -139,14 +147,13 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                 *Team1_a = 0;
                                 stacked_A = 'F';
                             }
-                            print_Map(map);
                         }
                         else
                         {
                             temp1 = *Team2_B;
                             *Team2_B += wantYut;
                             temp2 = *Team2_B;
-                            movePiece(temp1, temp2, 'B');
+                            movePiece(temp1, temp2, 'B', Team2_B);
                             if (*Team2_B == *Team1_A && *Team1_A != *Team1_a)
                             {
                                 Token_B = 'T';
@@ -167,9 +174,8 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                             if (*Team2_B == *Team2_b && *Team2_B != 0 && *Team2_b != 0)
                             {
                                 stacked_B = 'T';
-                                movePiece(*Team2_B, *Team2_b, 'D');
+                                movePiece(*Team2_B, *Team2_b, 'D', Team2_B);
                             }
-                            print_Map(map);
                         }
                     }
                     count_ne--;
@@ -199,7 +205,16 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                     if (wantYut == 6)
                     {
                         if (*Team2_B == 0 && *Team2_b == 0)
+                        {
                             printf("갈 수 있는 말이 없습니다.\n\n");
+                            break;
+                        }
+                        else if (*Team2_b == 0 && *Team2_B != 0)
+                        {
+                            printf("그 말은 뒤로 갈 수 없습니다.\n\n");
+                            yut_array[i] = 6;
+                            goto RE;
+                        }
                         else
                         {
                             if (*Team2_B == *Team2_b && *Team2_B != 0 && *Team2_b != 0) stacked_B = 'T';
@@ -209,7 +224,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                 *Team2_b -= 1;
                                 temp2 = *Team2_b;
                                 *Team2_B = temp2;
-                                movePiece(temp1, temp2, 'D');
+                                movePiece(temp1, temp2, 'D', Team2_b);
                                 if (*Team2_b == *Team1_A && *Team1_A != *Team1_a)
                                 {
                                     Token_B = 'T';
@@ -227,14 +242,13 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                     *Team1_a = 0;
                                     stacked_A = 'F';
                                 }
-                                print_Map(map);
                             }
                             else
                             {
                                 temp1 = *Team2_b;
                                 *Team2_b -= 1;
                                 temp2 = *Team2_b;
-                                movePiece(temp1, temp2, 'b');
+                                movePiece(temp1, temp2, 'b', Team2_b);
                                 if (*Team2_b == *Team1_A && *Team1_A != *Team1_a)
                                 {
                                     Token_B = 'T';
@@ -255,9 +269,8 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                 if (*Team2_B == *Team2_b && *Team2_B != 0 && *Team2_b != 0)
                                 {
                                     stacked_B = 'T';
-                                    movePiece(*Team2_B, *Team2_b, 'D');
+                                    movePiece(*Team2_B, *Team2_b, 'D', Team2_b);
                                 }
-                                print_Map(map);
                             }
                         }
                     }
@@ -270,7 +283,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                             *Team2_b += wantYut;
                             temp2 = *Team2_b;
                             *Team2_B = temp2;
-                            movePiece(temp1, temp2, 'D');
+                            movePiece(temp1, temp2, 'D', Team2_b);
                             if (*Team2_b == *Team1_A && *Team1_A != *Team1_a)
                             {
                                 Token_B = 'T';
@@ -288,14 +301,13 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                                 *Team1_a = 0;
                                 stacked_A = 'F';
                             }
-                            print_Map(map);
                         }
                         else
                         {
                             temp1 = *Team2_b;
                             *Team2_b += wantYut;
                             temp2 = *Team2_b;
-                            movePiece(temp1, temp2, 'b');
+                            movePiece(temp1, temp2, 'b', Team2_b);
                             if (*Team2_b == *Team1_A && *Team1_A != *Team1_a)
                             {
                                 Token_B = 'T';
@@ -316,9 +328,8 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                             if (*Team2_B == *Team2_b && *Team2_B != 0 && *Team2_b != 0)
                             {
                                 stacked_B = 'T';
-                                movePiece(*Team2_B, *Team2_b, 'D');
+                                movePiece(*Team2_B, *Team2_b, 'D', Team2_b);
                             }
-                            print_Map(map);
                         }
                     }
                     count_ne--;
@@ -336,6 +347,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
             printf("그런 말은 없습니다.\n\n");
             goto RE;
         }
-
+        system("cls");
     }
+    system("cls");
 }
