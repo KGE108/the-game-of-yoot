@@ -27,7 +27,8 @@ void Rules(void)
     printf("3. 윷과 모가 나오면 한번씩 더 던진다.\n");
     printf("4. 가다가 다른 팀의 말 위에 겹치면 원래 있던 팀의 말이 시작지점으로 돌아간다.\n");
     printf("5. 가다가 같은 팀의 말 위에 겹치면 두 말이 같이 움직인다.\n");
-    printf("6. 2점을 먼저 내는 팀이 이긴다.");
+    printf("6. 첫번째 팀의 말이 업혔을 경우 H로 두번째 팀의 말이 업혔을 경우 V로 표현된다.\n");
+    printf("7. 2점을 먼저 내는 팀이 이긴다.");
     system("pause>null");
     system("cls");
 }
@@ -111,7 +112,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
             printf("\n\n갈 수 있는 말이 없습니다.\n\n");
             break;
         }
-        printf("\n\n윷은 윷에 해당되는 숫자를, 말은 A와a 중 하나를 골라 이어서 입력해주세요( ex : 2a or 3A)");
+        printf("\n\n윷은 윷에 해당되는 숫자를, 말은 A와a 중 하나를 골라 이어서 입력해주세요(업혔을 경우 A,a 둘 다 사용 가능)( ex : 2a or 3A)");
         printf("\n(도=1, 개=2, 걸=3, 윷=4, 모=5, 빽도=6)(A/a)\n쓰고 싶은 윷,말>> ");
 
 
@@ -152,7 +153,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                 *Team1_A -= 1;
                                 temp2 = *Team1_A;
                                 *Team1_a = temp2;
-                                movePiece(temp1, temp2, 'C', Team1_A);
+                                movePiece(temp1, temp2, 'H', Team1_A);
                                 if (*Team1_A == *Team2_B && *Team2_B != *Team2_b)
                                 {
                                     Token_A = 'T';
@@ -197,7 +198,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                 if (*Team1_a == *Team1_A && *Team1_A != 0 && *Team1_a != 0)
                                 {
                                     stacked_A = 'T';
-                                    movePiece(*Team1_A, *Team1_A, 'C', Team1_A);
+                                    movePiece(*Team1_A, *Team1_A, 'H', Team1_A);
                                 }
                             }
                         }
@@ -211,7 +212,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                             *Team1_A += wantYut;
                             temp2 = *Team1_A;
                             *Team1_a = temp2;
-                            movePiece(temp1, temp2, 'C', Team1_A);
+                            movePiece(temp1, temp2, 'H', Team1_A);
                             if (*Team1_A == *Team2_B && *Team2_B != *Team2_b)
                             {
                                 Token_A = 'T';
@@ -256,7 +257,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                             if (*Team1_a == *Team1_A && *Team1_A != 0 && *Team1_a != 0)
                             {
                                 stacked_A = 'T';
-                                movePiece(*Team1_A, *Team1_A, 'C', Team1_A);
+                                movePiece(*Team1_A, *Team1_A, 'H', Team1_A);
                             }
                         }
                     }
@@ -308,7 +309,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                 *Team1_a -= 1;
                                 temp2 = *Team1_a;
                                 *Team1_A = temp2;
-                                movePiece(temp1, temp2, 'C', Team1_a);
+                                movePiece(temp1, temp2, 'H', Team1_a);
                                 if (*Team1_A == *Team2_B && *Team2_B != *Team2_b)
                                 {
                                     Token_A = 'T';
@@ -353,7 +354,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                                 if (*Team1_a == *Team1_A && *Team1_A != 0 && *Team1_a != 0)
                                 {
                                     stacked_A = 'T';
-                                    movePiece(*Team1_A, *Team1_A, 'C', Team1_a);
+                                    movePiece(*Team1_A, *Team1_A, 'H', Team1_a);
                                 }
                             }
                         }
@@ -367,7 +368,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                             *Team1_a += wantYut;
                             temp2 = *Team1_a;
                             *Team1_A = temp2;
-                            movePiece(temp1, temp2, 'C', Team1_a);
+                            movePiece(temp1, temp2, 'H', Team1_a);
                             if (*Team1_a == *Team2_B && *Team2_B != *Team2_b)
                             {
                                 Token_A = 'T';
@@ -412,7 +413,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                             if (*Team1_a == *Team1_A && *Team1_A != 0 && *Team1_a != 0)
                             {
                                 stacked_A = 'T';
-                                movePiece(*Team1_A, *Team1_A, 'C', Team1_a);
+                                movePiece(*Team1_A, *Team1_A, 'H', Team1_a);
                             }
                         }
                     }
@@ -468,7 +469,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
             printf("\n\n갈 수 있는 말이 없습니다.\n\n");
             break;
         }
-        printf("\n\n윷은 윷에 해당되는 숫자를, 말은 B와b 중 하나를 골라 이어서 입력해주세요( ex : 2b or 3B)");
+        printf("\n\n윷은 윷에 해당되는 숫자를, 말은 B와b 중 하나를 골라 이어서 입력해주세요(업혔을 경우 B,b 둘 다 사용가능)( ex : 2b or 3B)");
         printf("\n(도=1, 개=2, 걸=3, 윷=4, 모=5, 빽도=6)(B/b)\n쓰고 싶은 윷,말>> ");
 
 
