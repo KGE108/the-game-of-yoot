@@ -15,18 +15,18 @@ int score1 = 0, score2 = 0;
 
 void Rules(void)
 {
-    printf("-----------\n\nÀ·³îÀÌ ±ÔÄ¢\n\n-----------\n");
-    printf("-<ÀÌµ¿ ¼ö>-\n");
-    printf("µµ-1Ä­\n°³-2Ä­\n°É-3Ä­\nÀ·-4Ä­\n¸ğ-5Ä­\n»ªµµ-µÚ·Î 1Ä­\n\n");
+    printf("-----------\n\nìœ·ë†€ì´ ê·œì¹™\n\n-----------\n");
+    printf("-<ì´ë™ ìˆ˜>-\n");
+    printf("ë„-1ì¹¸\nê°œ-2ì¹¸\nê±¸-3ì¹¸\nìœ·-4ì¹¸\nëª¨-5ì¹¸\në¹½ë„-ë’¤ë¡œ 1ì¹¸\n\n");
     system("pause>null");
     system("cls");
-    printf("-----------\n\nÀ·³îÀÌ ±ÔÄ¢\n\n-----------\n");
-    printf("1. °¢ ÆÀÀÌ À·À» ´øÁ® ÀÛÀº °ªÀÌ ³ª¿À´Â ÆÀÀÌ ¸ÕÀú ÇÑ´Ù.\n");
-    printf("2. À·À» ´øÁ®¼­ À· ÆÇÀ» ÇÑ¹ÙÄû ¸ÕÀú µµ´Â ÆÀÀÌ ÀÌ±ä´Ù.\n");
-    printf("3. À·°ú ¸ğ°¡ ³ª¿À¸é ÇÑ¹ø¾¿ ´õ ´øÁø´Ù.\n");
-    printf("4. °¡´Ù°¡ ´Ù¸¥ ÆÀÀÇ ¸» À§¿¡ °ãÄ¡¸é ¿ø·¡ ÀÖ´ø ÆÀÀÇ ¸»ÀÌ ½ÃÀÛÁöÁ¡À¸·Î µ¹¾Æ°£´Ù.\n");
-    printf("5. °¡´Ù°¡ °°Àº ÆÀÀÇ ¸» À§¿¡ °ãÄ¡¸é µÎ ¸»ÀÌ °°ÀÌ ¿òÁ÷ÀÎ´Ù.\n");
-    printf("6. 2Á¡À» ¸ÕÀú ³»´Â ÆÀÀÌ ÀÌ±ä´Ù.");
+    printf("-----------\n\nìœ·ë†€ì´ ê·œì¹™\n\n-----------\n");
+    printf("1. ê° íŒ€ì´ ìœ·ì„ ë˜ì ¸ ì‘ì€ ê°’ì´ ë‚˜ì˜¤ëŠ” íŒ€ì´ ë¨¼ì € í•œë‹¤.\n");
+    printf("2. ìœ·ì„ ë˜ì ¸ì„œ ìœ· íŒì„ í•œë°”í€´ ë¨¼ì € ë„ëŠ” íŒ€ì´ ì´ê¸´ë‹¤.\n");
+    printf("3. ìœ·ê³¼ ëª¨ê°€ ë‚˜ì˜¤ë©´ í•œë²ˆì”© ë” ë˜ì§„ë‹¤.\n");
+    printf("4. ê°€ë‹¤ê°€ ë‹¤ë¥¸ íŒ€ì˜ ë§ ìœ„ì— ê²¹ì¹˜ë©´ ì›ë˜ ìˆë˜ íŒ€ì˜ ë§ì´ ì‹œì‘ì§€ì ìœ¼ë¡œ ëŒì•„ê°„ë‹¤.\n");
+    printf("5. ê°€ë‹¤ê°€ ê°™ì€ íŒ€ì˜ ë§ ìœ„ì— ê²¹ì¹˜ë©´ ë‘ ë§ì´ ê°™ì´ ì›€ì§ì¸ë‹¤.\n");
+    printf("6. 2ì ì„ ë¨¼ì € ë‚´ëŠ” íŒ€ì´ ì´ê¸´ë‹¤.");
     system("pause>null");
     system("cls");
 }
@@ -78,7 +78,7 @@ void movePiece(int source, int dest, char piece, int* Teamlocate1)
     if (source == 1 && dest == 0) *Teamlocate1 = 20;
 }
 
-void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* Team2_B, int* Team2_b) //Team 1 ¸» ÀÌµ¿
+void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* Team2_B, int* Team2_b) //Team 1 ë§ ì´ë™
 {
     int count_ne = count;
     int temp1, temp2;
@@ -93,24 +93,24 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
         printf("\n");
         print_Map(map);
         printf("\n\n------------------------------\n\n");
-        printf("\n³²Àº À·: ");
+        printf("\në‚¨ì€ ìœ·: ");
         for (int i = 0; i < count; i++)
         {
-            if (yut_array[i] == 1) printf("µµ ");
-            if (yut_array[i] == 2) printf("°³ ");
-            if (yut_array[i] == 3) printf("°É ");
-            if (yut_array[i] == 4) printf("À· ");
-            if (yut_array[i] == 5) printf("¸ğ ");
-            if (yut_array[i] == 6) printf("»ªµµ ");
+            if (yut_array[i] == 1) printf("ë„ ");
+            if (yut_array[i] == 2) printf("ê°œ ");
+            if (yut_array[i] == 3) printf("ê±¸ ");
+            if (yut_array[i] == 4) printf("ìœ· ");
+            if (yut_array[i] == 5) printf("ëª¨ ");
+            if (yut_array[i] == 6) printf("ë¹½ë„ ");
         }
 
         if (*Team1_A == 0 && *Team1_a == 0 && yut_array[0] == 6)
         {
-            printf("\n\n°¥ ¼ö ÀÖ´Â ¸»ÀÌ ¾ø½À´Ï´Ù.\n\n");
+            printf("\n\nê°ˆ ìˆ˜ ìˆëŠ” ë§ì´ ì—†ìŠµë‹ˆë‹¤.\n\n");
             break;
         }
-        printf("\n\nÀ·Àº À·¿¡ ÇØ´çµÇ´Â ¼ıÀÚ¸¦, ¸»Àº A¿Ía Áß ÇÏ³ª¸¦ °ñ¶ó ÀÌ¾î¼­ ÀÔ·ÂÇØÁÖ¼¼¿ä( ex : 2a or 3A)");
-        printf("\n(µµ=1, °³=2, °É=3, À·=4, ¸ğ=5, »ªµµ=6)(A/a)\n¾²°í ½ÍÀº À·,¸»>> ");
+        printf("\n\nìœ·ì€ ìœ·ì— í•´ë‹¹ë˜ëŠ” ìˆ«ìë¥¼, ë§ì€ Aì™€a ì¤‘ í•˜ë‚˜ë¥¼ ê³¨ë¼ ì´ì–´ì„œ ì…ë ¥í•´ì£¼ì„¸ìš”( ex : 2a or 3A)");
+        printf("\n(ë„=1, ê°œ=2, ê±¸=3, ìœ·=4, ëª¨=5, ë¹½ë„=6)(A/a)\nì“°ê³  ì‹¶ì€ ìœ·,ë§>> ");
 
 
         scanf("%d%c", &wantYut, &wantPiece);
@@ -119,7 +119,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
         {
             if (*Team1_A > 20)
             {
-                printf("\n\nÀÌ¹Ì ³­ ¸» ÀÔ´Ï´Ù\n\n");
+                printf("\n\nì´ë¯¸ ë‚œ ë§ ì…ë‹ˆë‹¤\n\n");
                 goto RE;
             }
 
@@ -132,12 +132,12 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                     {
                         if (*Team1_A == 0 && *Team1_a == 0)
                         {
-                            printf("°¥ ¼ö ÀÖ´Â ¸»ÀÌ ¾ø½À´Ï´Ù.\n\n");
+                            printf("ê°ˆ ìˆ˜ ìˆëŠ” ë§ì´ ì—†ìŠµë‹ˆë‹¤.\n\n");
                             break;
                         }
                         else if (*Team1_A == 0 && Team1_a != 0)
                         {
-                            printf("±× ¸»Àº µÚ·Î °¥ ¼ö ¾ø½À´Ï´Ù.\n\n");
+                            printf("ê·¸ ë§ì€ ë’¤ë¡œ ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n\n");
                             yut_array[i] = 6;
                             goto RE;
                         }
@@ -263,7 +263,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                 }
                 else if (i == count - 1)
                 {
-                    printf("\n±× À·Àº ´øÁø ÀûÀÌ ¾ø½À´Ï´Ù.\n\n");
+                    printf("\nê·¸ ìœ·ì€ ë˜ì§„ ì ì´ ì—†ìŠµë‹ˆë‹¤.\n\n");
                     break;
                 }
             }
@@ -275,7 +275,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
         {
             if (*Team1_a > 20)
             {
-                printf("\n\nÀÌ¹Ì ³­ ¸» ÀÔ´Ï´Ù\n\n");
+                printf("\n\nì´ë¯¸ ë‚œ ë§ ì…ë‹ˆë‹¤\n\n");
                 goto RE;
             }
 
@@ -288,12 +288,12 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                     {
                         if (*Team1_A == 0 && *Team1_a == 0)
                         {
-                            printf("°¥ ¼ö ÀÖ´Â ¸»ÀÌ ¾ø½À´Ï´Ù.\n");
+                            printf("ê°ˆ ìˆ˜ ìˆëŠ” ë§ì´ ì—†ìŠµë‹ˆë‹¤.\n");
                             break;
                         }
                         else if (*Team1_a == 0 && *Team1_A != 0)
                         {
-                            printf("±× ¸»Àº µÚ·Î °¥ ¼ö ¾ø½À´Ï´Ù.\n\n");
+                            printf("ê·¸ ë§ì€ ë’¤ë¡œ ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n\n");
                             yut_array[i] = 6;
                             goto RE;
                         }
@@ -419,14 +419,14 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
                 }
                 else if (i == count - 1)
                 {
-                    printf("\n±× À·Àº ´øÁø ÀûÀÌ ¾ø½À´Ï´Ù.\n\n");
+                    printf("\nê·¸ ìœ·ì€ ë˜ì§„ ì ì´ ì—†ìŠµë‹ˆë‹¤.\n\n");
                     break;
                 }
             }
         }
         else
         {
-            printf("±×·± ¸»Àº ¾ø½À´Ï´Ù.\n\n");
+            printf("ê·¸ëŸ° ë§ì€ ì—†ìŠµë‹ˆë‹¤.\n\n");
             goto RE;
         }
         system("cls");
@@ -434,7 +434,7 @@ void Team1_Go_Piece(int* yut_array, int count, int* Team1_A, int* Team1_a, int* 
     system("cls");
 }
 
-void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* Team1_A, int* Team1_a) //Team 2 ¸» ÀÌµ¿
+void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* Team1_A, int* Team1_a) //Team 2 ë§ ì´ë™
 {
     int count_ne = count;
     int temp1, temp2;
@@ -449,24 +449,24 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
         printf("\n");
         print_Map(map);
         printf("\n\n------------------------------\n\n");
-        printf("\n³²Àº À·: ");
+        printf("\në‚¨ì€ ìœ·: ");
         for (int i = 0; i < count; i++)
         {
-            if (yut_array[i] == 1) printf("µµ ");
-            if (yut_array[i] == 2) printf("°³ ");
-            if (yut_array[i] == 3) printf("°É ");
-            if (yut_array[i] == 4) printf("À· ");
-            if (yut_array[i] == 5) printf("¸ğ ");
-            if (yut_array[i] == 6) printf("»ªµµ ");
+            if (yut_array[i] == 1) printf("ë„ ");
+            if (yut_array[i] == 2) printf("ê°œ ");
+            if (yut_array[i] == 3) printf("ê±¸ ");
+            if (yut_array[i] == 4) printf("ìœ· ");
+            if (yut_array[i] == 5) printf("ëª¨ ");
+            if (yut_array[i] == 6) printf("ë¹½ë„ ");
         }
 
         if (*Team2_B == 0 && *Team2_b == 0 && yut_array[0] == 6)
         {
-            printf("\n\n°¥ ¼ö ÀÖ´Â ¸»ÀÌ ¾ø½À´Ï´Ù.\n\n");
+            printf("\n\nê°ˆ ìˆ˜ ìˆëŠ” ë§ì´ ì—†ìŠµë‹ˆë‹¤.\n\n");
             break;
         }
-        printf("\n\nÀ·Àº À·¿¡ ÇØ´çµÇ´Â ¼ıÀÚ¸¦, ¸»Àº B¿Íb Áß ÇÏ³ª¸¦ °ñ¶ó ÀÌ¾î¼­ ÀÔ·ÂÇØÁÖ¼¼¿ä( ex : 2b or 3B)");
-        printf("\n(µµ=1, °³=2, °É=3, À·=4, ¸ğ=5, »ªµµ=6)(B/b)\n¾²°í ½ÍÀº À·,¸»>> ");
+        printf("\n\nìœ·ì€ ìœ·ì— í•´ë‹¹ë˜ëŠ” ìˆ«ìë¥¼, ë§ì€ Bì™€b ì¤‘ í•˜ë‚˜ë¥¼ ê³¨ë¼ ì´ì–´ì„œ ì…ë ¥í•´ì£¼ì„¸ìš”( ex : 2b or 3B)");
+        printf("\n(ë„=1, ê°œ=2, ê±¸=3, ìœ·=4, ëª¨=5, ë¹½ë„=6)(B/b)\nì“°ê³  ì‹¶ì€ ìœ·,ë§>> ");
 
 
         scanf("%d%c", &wantYut, &wantPiece);
@@ -475,7 +475,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
         {
             if (*Team2_B > 20)
             {
-                printf("\n\nÀÌ¹Ì ³­ ¸» ÀÔ´Ï´Ù\n\n");
+                printf("\n\nì´ë¯¸ ë‚œ ë§ ì…ë‹ˆë‹¤\n\n");
                 goto RE;
             }
 
@@ -488,12 +488,12 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                     {
                         if (*Team2_B == 0 && *Team2_b == 0)
                         {
-                            printf("°¥ ¼ö ÀÖ´Â ¸»ÀÌ ¾ø½À´Ï´Ù.\n\n");
+                            printf("ê°ˆ ìˆ˜ ìˆëŠ” ë§ì´ ì—†ìŠµë‹ˆë‹¤.\n\n");
                             break;
                         }
                         if (*Team2_B == 0 && *Team2_b != 0)
                         {
-                            printf("±× ¸»Àº µÚ·Î °¥ ¼ö ¾ø½À´Ï´Ù.\n\n");
+                            printf("ê·¸ ë§ì€ ë’¤ë¡œ ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n\n");
                             yut_array[i] = 6;
                             goto RE;
                         }
@@ -619,7 +619,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                 }
                 else if (i == count - 1)
                 {
-                    printf("±× À·Àº ´øÁø ÀûÀÌ ¾ø½À´Ï´Ù.\n\n");
+                    printf("ê·¸ ìœ·ì€ ë˜ì§„ ì ì´ ì—†ìŠµë‹ˆë‹¤.\n\n");
                     break;
                 }
             }
@@ -629,7 +629,7 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
         {
             if (*Team2_b > 20)
             {
-                printf("\n\nÀÌ¹Ì ³­ ¸» ÀÔ´Ï´Ù\n\n");
+                printf("\n\nì´ë¯¸ ë‚œ ë§ ì…ë‹ˆë‹¤\n\n");
                 goto RE;
             }
 
@@ -642,12 +642,12 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                     {
                         if (*Team2_B == 0 && *Team2_b == 0)
                         {
-                            printf("°¥ ¼ö ÀÖ´Â ¸»ÀÌ ¾ø½À´Ï´Ù.\n\n");
+                            printf("ê°ˆ ìˆ˜ ìˆëŠ” ë§ì´ ì—†ìŠµë‹ˆë‹¤.\n\n");
                             break;
                         }
                         else if (*Team2_b == 0 && *Team2_B != 0)
                         {
-                            printf("±× ¸»Àº µÚ·Î °¥ ¼ö ¾ø½À´Ï´Ù.\n\n");
+                            printf("ê·¸ ë§ì€ ë’¤ë¡œ ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n\n");
                             yut_array[i] = 6;
                             goto RE;
                         }
@@ -773,14 +773,14 @@ void Team2_Go_Piece(int* yut_array, int count, int* Team2_B, int* Team2_b, int* 
                 }
                 else if (i == count - 1)
                 {
-                    printf("\n±× À·Àº ´øÁø ÀûÀÌ ¾ø½À´Ï´Ù.\n\n");
+                    printf("\nê·¸ ìœ·ì€ ë˜ì§„ ì ì´ ì—†ìŠµë‹ˆë‹¤.\n\n");
                     break;
                 }
             }
         }
         else
         {
-            printf("±×·± ¸»Àº ¾ø½À´Ï´Ù.\n\n");
+            printf("ê·¸ëŸ° ë§ì€ ì—†ìŠµë‹ˆë‹¤.\n\n");
             goto RE;
         }
         system("cls");
@@ -797,7 +797,7 @@ void Throwing_Yuts(int* yut_array, int* count, char* name)
     printf("\n");
     print_Map(map);
     printf("\n\n------------------------------\n\n");
-    printf("%s! À·À» ´øÁö½Ã·Á¸é ¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä.\n\n", name);
+    printf("%s! ìœ·ì„ ë˜ì§€ì‹œë ¤ë©´ ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.\n\n", name);
     scanf("%c", &act);
     while (1)
     {
@@ -807,31 +807,31 @@ void Throwing_Yuts(int* yut_array, int* count, char* name)
         {
         case 1:
             yut_array[i] = yut;
-            printf("µµ!\n");
+            printf("ë„!\n");
             break;
         case 2:
             yut_array[i] = yut;
-            printf("°³!\n");
+            printf("ê°œ!\n");
             break;
         case 3:
             yut_array[i] = yut;
-            printf("°É!\n");
+            printf("ê±¸!\n");
             break;
         case 4:
             yut_array[i] = yut;
-            printf("À·!\n");
+            printf("ìœ·!\n");
             i++;
             state = 1;
             break;
         case 5:
             yut_array[i] = yut;
-            printf("¸ğ!\n");
+            printf("ëª¨!\n");
             i++;
             state = 1;
             break;
         case 6:
             yut_array[i] = yut;
-            printf("»ªµµ!\n");
+            printf("ë¹½ë„!\n");
             break;
         }
         if (state == 0) break;
@@ -844,10 +844,10 @@ void Throwing_Yuts(int* yut_array, int* count, char* name)
 void setTeamName(char* Team1, char* Team2)
 {
     char Temp[16];
-    printf("\n¼ø¼­¸¦ Á¤ÇÏ±â À§ÇØ À·À» Ã³À½ ´øÁú ÆÀÀÇ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä >");
+    printf("\nìˆœì„œë¥¼ ì •í•˜ê¸° ìœ„í•´ ìœ·ì„ ì²˜ìŒ ë˜ì§ˆ íŒ€ì˜ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš” >");
     scanf("%s", Temp);
     strcpy(Team1, Temp);
-    printf("\n¼ø¼­¸¦ Á¤ÇÏ±â À§ÇØ À·À» µÎ ¹øÂ°·Î ´øÁú ÆÀÀÇ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä >");
+    printf("\nìˆœì„œë¥¼ ì •í•˜ê¸° ìœ„í•´ ìœ·ì„ ë‘ ë²ˆì§¸ë¡œ ë˜ì§ˆ íŒ€ì˜ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš” >");
     scanf("%s", Temp);
     strcpy(Team2, Temp);
 }
@@ -859,15 +859,15 @@ void Deciding_the_Order(char* name1, char* name2)
     char act;
     char name_yut1[20];
     char name_yut2[20];
-    char zero[10] = "»ªµµ";
-    char one[4] = "µµ";
-    char two[4] = "°³";
-    char three[4] = "°É";
-    char four[4] = "À·";
-    char five[4] = "¸ğ";
+    char zero[10] = "ë¹½ë„";
+    char one[4] = "ë„";
+    char two[4] = "ê°œ";
+    char three[4] = "ê±¸";
+    char four[4] = "ìœ·";
+    char five[4] = "ëª¨";
 Ex:
     system("cls");
-    printf("%s! À·À» ´øÁö½Ã·Á¸é ¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä.\n\n", name1);
+    printf("%s! ìœ·ì„ ë˜ì§€ì‹œë ¤ë©´ ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.\n\n", name1);
     scanf("%c", &act);
     getchar();
     yut1 = go[rand() % 16];
@@ -892,8 +892,8 @@ Ex:
         strcpy(name_yut1, five);
         break;
     }
-    printf("------------------------------\n%sÀÇ À·: %s\n------------------------------\n\n\n", name1, name_yut1);
-    printf("%s! À·À» ´øÁö½Ã·Á¸é ¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä.\n\n", name2);
+    printf("------------------------------\n%sì˜ ìœ·: %s\n------------------------------\n\n\n", name1, name_yut1);
+    printf("%s! ìœ·ì„ ë˜ì§€ì‹œë ¤ë©´ ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.\n\n", name2);
     scanf("%c", &act);
     yut2 = go[rand() % 16];
     switch (yut2)
@@ -917,18 +917,18 @@ Ex:
         strcpy(name_yut2, five);
         break;
     }
-    printf("------------------------------\n%sÀÇ À·: %s\n------------------------------\n\n\n", name2, name_yut2);
+    printf("------------------------------\n%sì˜ ìœ·: %s\n------------------------------\n\n\n", name2, name_yut2);
     if (yut1 == yut2)
     {
-        printf("µÎ ÆÀÀÇ À·ÀÌ °°¾Æ ÀçÁøÇàÇÕ´Ï´Ù!\n\n");
+        printf("ë‘ íŒ€ì˜ ìœ·ì´ ê°™ì•„ ì¬ì§„í–‰í•©ë‹ˆë‹¤!\n\n");
         Sleep(3000);
         goto Ex;
     }
 
-    if (yut1 < yut2) printf("%sÀÇ ¼±ÀÔ´Ï´Ù!\n\n\n", name1);
+    if (yut1 < yut2) printf("%sì˜ ì„ ì…ë‹ˆë‹¤!\n\n\n", name1);
 
     if (yut1 > yut2)
-        printf("%sÀÇ ¼±ÀÔ´Ï´Ù!\n\n\n", name2);
+        printf("%sì˜ ì„ ì…ë‹ˆë‹¤!\n\n\n", name2);
 
     Sleep(3000);
     system("cls");
@@ -946,7 +946,7 @@ void Score(int* Team1_A, int* Team1_a, int* Team2_B, int* Team2_b, char* name1, 
     }
     else if (*Team2_B > 20 && *Team2_b > 20)
         score2 += 2;
-    printf("%sÆÀ Á¡¼ö : %d\n%sÆÀ Á¡¼ö : %d", name1, score1, name2, score2);
+    printf("%síŒ€ ì ìˆ˜ : %d\n%síŒ€ ì ìˆ˜ : %d", name1, score1, name2, score2);
 }
 
 int main()
@@ -989,7 +989,7 @@ int main()
 
         if (Team1_A > 20 && Team1_a > 20)
         {
-            printf("\n\nÃàÇÏÇÕ´Ï´Ù !! %sÀÇ ½Â¸®ÀÔ´Ï´Ù!", name1);
+            printf("\n\nì¶•í•˜í•©ë‹ˆë‹¤ !! %sì˜ ìŠ¹ë¦¬ì…ë‹ˆë‹¤!", name1);
             break;
         }
         Score(&Team1_A, &Team1_a, &Team2_B, &Team2_b, name1, name2);
@@ -1009,7 +1009,7 @@ int main()
 
         if (Team2_B > 20 && Team2_b > 20)
         {
-            printf("\n\nÃàÇÏÇÕ´Ï´Ù !! %sÀÇ ½Â¸®ÀÔ´Ï´Ù!", name2);
+            printf("\n\nì¶•í•˜í•©ë‹ˆë‹¤ !! %sì˜ ìŠ¹ë¦¬ì…ë‹ˆë‹¤!", name2);
             break;
         }
     }
